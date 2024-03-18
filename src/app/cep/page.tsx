@@ -73,9 +73,6 @@ export default function Page() {
         cep1, cep2, cep3, cep4, cep5
     ]);
 
-
-    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
     const submitForm: SubmitHandler<CepType> = async (values) => {
 
         const ceps = Object.values(values);
