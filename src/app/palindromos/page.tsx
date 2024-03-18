@@ -70,7 +70,7 @@ export default function Page() {
 
     return (
         <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4 pb-32">
-            <div className="flex flex-col h-full w-full items-center gap-2 justify-start bg-gray-800 rounded-md">
+            <div className="flex flex-col h-full w-full items-center p-2 gap-2 justify-start bg-gray-900 rounded-md">
                 <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-start gap-2 pt-2">
                     <Input
                         type="text"
