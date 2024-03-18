@@ -30,14 +30,14 @@ const Nav = () => {
                     return (
                         <Link
                             prefetch={false}
-                            className={`${link.path === pathName && " bg-green-400/30 rounded-full p-2"
-                                } relative flex items-center group hover:text-green-400 hover:scale-110 transition-all duration-300`}
+                            className={`${link.path === pathName && " bg-indigo-600/30 rounded-full p-2"
+                                } relative flex items-center group hover:text-indigo-600 hover:scale-110 transition-all duration-300`}
                             key={index}
                             href={link.path}
                         >
                             <div className="absolute h-10 w-[90px] left-1/2 transform -translate-x-1/2 bottom-[44px] flex">
                                 <div className="bg-white/10 relative flex items-center justify-center w-full h-full rounded-xl">
-                                    <div className="text-[12px] leading-none text-green-400 font-semibold capitalize">
+                                    <div className="text-[12px] leading-none text-indigo-600 font-semibold capitalize">
                                         {link.name}
                                     </div>
                                     <div className="absolute border-solid border-t-white/10 border-t-8 border-x-transparent border-x-[6px] border-b-0.5 -mb-[48px]"></div>
