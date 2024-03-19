@@ -8,8 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 
 const PalindromoSchema = z.object({
-    numero1: z.string().nonempty(),
-    numero2: z.string().nonempty(),
+    numero1: z.string().min(1, "Digite um Numero").max(8, "Maximo 8 Digitos"),
+    numero2: z.string().min(1, "Digite um Numero").max(8, "Maximo 8 Digitos"),
 })
 
 type PalindromoType = z.infer<typeof PalindromoSchema>
@@ -69,8 +69,8 @@ export default function Page() {
     };
 
     return (
-        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4 pb-32">
-            <div className="flex flex-col h-full w-full items-center p-2 gap-2 justify-start bg-gray-900 rounded-md">
+        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4">
+            <div className="flex flex-col h-full w-full max-w-7xl items-center p-2 pb-24 gap-2 justify-start bg-gray-900 rounded-md">
                 <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-start gap-2 pt-2">
                     <Input
                         type="text"
@@ -89,7 +89,7 @@ export default function Page() {
                         text="Enviar"
                     />
                 </form>
-                <div className="flex flex-col h-full p-2 overflow-auto">
+                <div className="flex flex-col h-full p-2 overflow-auto mt-2">
                     {palindromes.map((palindrome, index) => (
                         <p key={index}>{palindrome}</p>
                     ))}

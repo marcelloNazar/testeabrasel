@@ -1,26 +1,38 @@
-import mongoose from "mongoose";
+// Veiculo.ts
+export interface Veiculo {
+    modelo: string;
+    anoFabricacao: number;
+    quantidadePortas: number;
+    marca: string;
+}
 
-const { Schema } = mongoose;
+export class Carro implements Veiculo {
+    modelo: string;
+    anoFabricacao: number;
+    quantidadePortas: number;
+    marca: string;
 
-const veiculoSchema = new Schema(
-    {
-        modelo: {
-            type: String,
-        },
-        ano: {
-            type: Number,
-        },
-        portas: {
-            type: Number,
-        },
-        marca: {
-            type: String,
-        },
+    constructor(modelo: string, anoFabricacao: number, quantidadePortas: number, marca: string) {
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.quantidadePortas = quantidadePortas;
+        this.marca = marca;
+    }
+}
 
-    },
-    { timestamps: true }
-);
+export class Moto implements Veiculo {
+    modelo: string;
+    anoFabricacao: number;
+    quantidadePortas: number;
+    marca: string;
+    rodas: number = 2;
+    passageiros: number;
 
-//If the Post collection does not exist create a new one.
-export default mongoose.models.Finance ||
-    mongoose.model("Veiculos", veiculoSchema);
+    constructor(modelo: string, anoFabricacao: number, quantidadePortas: number, marca: string, passageiros: number) {
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.quantidadePortas = quantidadePortas;
+        this.marca = marca;
+        this.passageiros = passageiros;
+    }
+}

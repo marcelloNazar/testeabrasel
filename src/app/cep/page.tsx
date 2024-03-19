@@ -8,11 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 
 const CepSchema = z.object({
-    cep1: z.string().nonempty(),
-    cep2: z.string().nonempty(),
-    cep3: z.string().nonempty(),
-    cep4: z.string().nonempty(),
-    cep5: z.string().nonempty(),
+    cep1: z.string().length(9, "Exatamente 8 Digitos"),
+    cep2: z.string().length(9, "Exatamente 8 Digitos"),
+    cep3: z.string().length(9, "Exatamente 8 Digitos"),
+    cep4: z.string().length(9, "Exatamente 8 Digitos"),
+    cep5: z.string().length(9, "Exatamente 8 Digitos"),
 })
 
 type CepType = z.infer<typeof CepSchema>
@@ -53,10 +53,10 @@ export default function Page() {
     function formatCEP(cep: string) {
         if (!cep) return "";
 
-        let cleanedCEP = cep.replace(/\D/g, ""); // Remove caracteres não numéricos
+        let cleanedCEP = cep.replace(/\D/g, "");
 
         if (cleanedCEP.length > 8) {
-            cleanedCEP = cleanedCEP.slice(0, 8); // Limita a 8 dígitos
+            cleanedCEP = cleanedCEP.slice(0, 8);
         }
 
         return cleanedCEP.replace(/(\d{5})(\d{3})/, "$1-$2");
@@ -88,8 +88,8 @@ export default function Page() {
         }
     };
     return (
-        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4 pb-32">
-            <div className="flex flex-col h-full w-full items-center justify-start p-2 px-4 bg-gray-900 rounded-md">
+        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4">
+            <div className="flex flex-col h-full w-full max-w-7xl items-center justify-start p-2 px-4 bg-gray-900 rounded-md">
                 <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-start gap-2 pt-2">
                     <Input
                         type="text"
@@ -127,21 +127,33 @@ export default function Page() {
                     />
                 </form>
 
-                {apiResponses.length ? <div className="flex w-full flex-col m-4 p-4 gap-2 bg-black rounded-md">
+                {apiResponses.length ? <div className="flex flex-col mt-4 p-4 gap-2 bg-black rounded-md">
+                    <div className="flex w-full border-b-2">
+                        <div className="px-2 w-28 border-r-2">CEP</div>
+                        <div className="px-2 w-64 border-r-2">Localidade</div>
+                        <div className="px-2 w-12 border-r-2">UF</div>
+                        <div className="px-2 w-14 border-r-2">DDD</div>
+                        <div className="px-2 w-24 border-r-2">IBGE</div>
+                        <div className="px-2 w-48 border-r-2">Bairro</div>
+                        <div className="px-2 w-48 border-r-2">Logadouro</div>
+                        <div className="px-2 w-20 border-r-2">Compl.</div>
+                        <div className="px-2 w-16 border-r-2">Siafi</div>
+                        <div className="px-2 w-12">Gia</div>
+                    </div>
                     {apiResponses.map((response, index) => (
-                        <div key={index} className="text-left">
+                        <div key={index}>
                             {response.cep ? (
                                 <div className="flex border-b-2">
-                                    <div className="px-2 border-r-2">CEP: {response.cep}</div>
-                                    <div className="px-2 border-r-2">Localid.: {response.localidade}</div>
-                                    <div className="px-2 border-r-2">UF: {response.uf}</div>
-                                    <div className="px-2 border-r-2">DDD: {response.ddd}</div>
-                                    <div className="px-2 border-r-2">IBGE: {response.ibge}</div>
-                                    <div className="px-2 border-r-2">Bairro: {response.bairro}</div>
-                                    <div className="px-2 border-r-2">Logad.: {response.logradouro}</div>
-                                    <div className="px-2 border-r-2">Compl.: {response.complemento}</div>
-                                    <div className="px-2 border-r-2">Siafi: {response.siafi}</div>
-                                    <div className="px-2 border-r-2">Gia: {response.gia}</div>
+                                    <div className="px-2 w-28 border-r-2">{response.cep}</div>
+                                    <div className="px-2 w-64 border-r-2">{response.localidade}</div>
+                                    <div className="px-2 w-12 border-r-2">{response.uf}</div>
+                                    <div className="px-2 w-14 border-r-2">{response.ddd}</div>
+                                    <div className="px-2 w-24 border-r-2">{response.ibge}</div>
+                                    <div className="px-2 w-48 border-r-2">{response.bairro}</div>
+                                    <div className="px-2 w-48 border-r-2">{response.logradouro}</div>
+                                    <div className="px-2 w-20  border-r-2">{response.complemento}</div>
+                                    <div className="px-2 w-16 border-r-2">{response.siafi}</div>
+                                    <div className="px-2 w-12">{response.gia}</div>
                                 </div>
                             ) :
                                 <div className="px-2 flex border-b-2">CEP Invalido</div>}
