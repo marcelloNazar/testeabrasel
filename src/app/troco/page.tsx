@@ -77,34 +77,32 @@ export default function Page() {
     };
 
     return (
-        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4">
-            <div className="flex flex-col h-full w-full max-w-7xl items-center justify-start p-2 gap-2 bg-gray-900 rounded-md">
-                <form onSubmit={handleSubmit(submitForm)} className="flex flex-col w-96 items-center justify-start gap-2 pt-2">
-                    <Input
-                        type="text"
-                        {...register("valorCompra")}
-                        placeholder="Valor da Compra"
-                        error={errors?.valorCompra?.message?.toString()}
-                    />
-                    <Input
-                        type="text"
-                        {...register("valorDinheiro")}
-                        placeholder="Valor em dinheiro"
-                        error={errors?.valorDinheiro?.message?.toString()}
-                    />
-                    <Button
-                        onClick={() => { }}
-                        text="Calcular"
-                    />
-                </form>
-                {valorCompra && valorDinheiro ? <div className="flex flex-col w-96 p-2 overflow-auto mt-2 bg-black rounded-md">
-                    <div className="flex w-full justify-between"><p>Compra:</p> {`$ ${valorCompra}`}</div>
-                    <div className="flex w-full justify-between"><p>Dinheiro:</p> {`$ ${valorDinheiro}`}</div>
-                    <div className="flex w-full justify-between"><p>Notas de 1:</p> {troco.notas1 ? troco.notas1 : "-"}</div>
-                    <div className="flex w-full justify-between"><p>Notas de 10:</p> {troco.notas10 ? troco.notas10 : "-"}</div>
-                    <div className="flex w-full justify-between"><p>Notas de 100:</p> {troco.notas100 ? troco.notas100 : "-"}</div>
-                </div> : <></>}
-            </div>
-        </main>
+        <div className="flex flex-col h-full w-full max-w-7xl items-center justify-start p-2 gap-2 bg-gray-900 rounded-md">
+            <form onSubmit={handleSubmit(submitForm)} className="flex flex-col w-96 items-center justify-start gap-2 pt-2">
+                <Input
+                    type="text"
+                    {...register("valorCompra")}
+                    placeholder="Valor da Compra"
+                    error={errors?.valorCompra?.message?.toString()}
+                />
+                <Input
+                    type="text"
+                    {...register("valorDinheiro")}
+                    placeholder="Valor em dinheiro"
+                    error={errors?.valorDinheiro?.message?.toString()}
+                />
+                <Button
+                    onClick={() => { }}
+                    text="Calcular"
+                />
+            </form>
+            {valorCompra && valorDinheiro ? <div className="flex flex-col w-96 p-2 overflow-auto mt-2 bg-black rounded-md">
+                <div className="flex w-full justify-between"><p>Compra:</p> {`$ ${valorCompra}`}</div>
+                <div className="flex w-full justify-between"><p>Dinheiro:</p> {`$ ${valorDinheiro}`}</div>
+                <div className="flex w-full justify-between"><p>Notas de 1:</p> {troco.notas1 ? troco.notas1 : "-"}</div>
+                <div className="flex w-full justify-between"><p>Notas de 10:</p> {troco.notas10 ? troco.notas10 : "-"}</div>
+                <div className="flex w-full justify-between"><p>Notas de 100:</p> {troco.notas100 ? troco.notas100 : "-"}</div>
+            </div> : <></>}
+        </div>
     );
 }

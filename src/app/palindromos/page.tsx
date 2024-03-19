@@ -69,32 +69,30 @@ export default function Page() {
     };
 
     return (
-        <main className="flex flex-col h-full w-full min-h-screen items-center justify-start p-4">
-            <div className="flex flex-col h-full w-full max-w-7xl items-center p-2 pb-24 gap-2 justify-start bg-gray-900 rounded-md">
-                <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-start gap-2 pt-2">
-                    <Input
-                        type="text"
-                        {...register("numero1")}
-                        placeholder="Numero 1"
-                        error={errors?.numero1?.message?.toString()}
-                    />
-                    <Input
-                        type="text"
-                        {...register("numero2")}
-                        placeholder="Numero 2"
-                        error={errors?.numero2?.message?.toString()}
-                    />
-                    <Button
-                        onClick={() => { }}
-                        text="Enviar"
-                    />
-                </form>
-                <div className="flex flex-col h-full p-2 overflow-auto mt-2">
-                    {palindromes.map((palindrome, index) => (
-                        <p key={index}>{palindrome}</p>
-                    ))}
-                </div>
+        <div className="flex flex-col h-full w-full max-w-7xl items-center p-2 pb-24 gap-2 justify-start bg-gray-900 rounded-md">
+            <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-start gap-2 pt-2">
+                <Input
+                    type="text"
+                    {...register("numero1")}
+                    placeholder="Numero 1"
+                    error={errors?.numero1?.message?.toString()}
+                />
+                <Input
+                    type="text"
+                    {...register("numero2")}
+                    placeholder="Numero 2"
+                    error={errors?.numero2?.message?.toString()}
+                />
+                <Button
+                    onClick={() => { }}
+                    text="Enviar"
+                />
+            </form>
+            <div className="flex flex-col h-full p-2 overflow-auto mt-2">
+                {palindromes.map((palindrome, index) => (
+                    <p key={index}>{palindrome}</p>
+                ))}
             </div>
-        </main>
+        </div>
     );
 }
