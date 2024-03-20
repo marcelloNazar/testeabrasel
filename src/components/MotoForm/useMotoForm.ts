@@ -65,14 +65,14 @@ export const useMotoForm = () => {
     const deleteCar = (motoToDelete: MotoType) => {
         const updatedMotos = motos.filter(moto => moto !== motoToDelete);
         setMotos(updatedMotos);
-        localStorage.setItem('carroData', JSON.stringify(updatedMotos));
+        localStorage.setItem('motoData', JSON.stringify(updatedMotos));
     }
 
     // função para salvar dados no Local storage
     const submitForm: SubmitHandler<MotoType> = async (values) => {
         const moto = new Moto(values.modelo, values.ano, "", values.marca, values.passageiros);
         const data = [...motos, moto];
-        localStorage.setItem('carroData', JSON.stringify(data));
+        localStorage.setItem('motoData', JSON.stringify(data));
         setMotos(data);
     };
 
